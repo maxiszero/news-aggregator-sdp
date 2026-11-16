@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>The Signal — RSS demo fixture</title>
+    <link>https://example.com/</link>
+    <description>Fictional stories for demonstrating an RSS adapter offline.</description>
+    <item>
+      <title>A coastal grid learns to run on the wind</title>
+      <description>Engineers in a North Atlantic port are testing how offshore turbines and community batteries can keep the lights on when the weather changes.</description>
+      <link>/demo/coastal-grid</link>
+      <pubDate>Mon, 16 Nov 2026 08:00:00 GMT</pubDate>
+      <category>world</category>
+      <category>energy</category>
+    </item>
+    <item>
+      <title>Listening for glaciers before they break</title>
+      <description>Small acoustic sensors are helping field teams study how freshwater moves beneath the ice and how cracks spread through a glacier.</description>
+      <link>/demo/listening-to-glaciers</link>
+      <pubDate>Sun, 15 Nov 2026 16:30:00 GMT</pubDate>
+      <category>science</category>
+      <category>climate</category>
+    </item>
+    <item>
+      <title>Small firms give empty storefronts a second life</title>
+      <description>Shared leases let a bakery, a bicycle repair shop and a bookbinder test new neighborhoods before committing to permanent space.</description>
+      <link>/demo/shared-storefronts</link>
+      <pubDate>Sat, 14 Nov 2026 11:30:00 GMT</pubDate>
+      <category>business</category>
+      <category>retail</category>
+    </item>
+    <item>
+      <title>A public archive brings street recordings back to the city</title>
+      <description>Archivists digitized decades of interviews and street sounds, then asked residents to identify the places and people in them.</description>
+      <link>/demo/street-recordings</link>
+      <pubDate>Fri, 13 Nov 2026 14:10:00 GMT</pubDate>
+      <category>culture</category>
+      <category>archives</category>
+    </item>
+    <item>
+      <title>Night trains add room for bikes on a cross-border route</title>
+      <description>A seasonal timetable gives overnight travelers more space for bicycles and a longer window to change trains at the border.</description>
+      <link>/demo/night-trains</link>
+      <pubDate>Thu, 12 Nov 2026 09:55:00 GMT</pubDate>
+      <category>world</category>
+      <category>transport</category>
+    </item>
+  </channel>
+</rss>

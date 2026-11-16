@@ -1,0 +1,42 @@
+[
+  {
+    "title": "What it takes to build a calmer web",
+    "description": "A small design team measures how lighter pages, readable type and fewer interruptions affect a reader’s ability to finish an article.",
+    "url": "/demo/a-calmer-web",
+    "published_at": "2026-11-16T06:30:00Z",
+    "tag_list": ["accessibility", "webdev"],
+    "cover_image": null
+  },
+  {
+    "title": "Inside a library’s workshop for repairing old laptops",
+    "description": "Volunteers document each repair, share the fixes and set up refurbished computers for residents who need a machine at home.",
+    "url": "/demo/library-repairs",
+    "published_at": "2026-11-15T10:30:00Z",
+    "tag_list": ["technology", "hardware", "community"],
+    "cover_image": null
+  },
+  {
+    "title": "A field guide to the sensors in an urban garden",
+    "description": "Students compare soil moisture and temperature readings to see how different kinds of shade affect when plants need watering.",
+    "url": "/demo/urban-garden-sensors",
+    "published_at": "2026-11-14T08:20:00Z",
+    "tag_list": ["science", "sensors", "environment"],
+    "cover_image": null
+  },
+  {
+    "title": "What a week of open data can tell a neighborhood",
+    "description": "A volunteer team maps public repair requests, tracing which streets are quickest to get a broken light or a pothole fixed.",
+    "url": "/demo/neighborhood-open-data",
+    "published_at": "2026-11-13T09:00:00Z",
+    "tag_list": ["technology", "opendata", "civictech"],
+    "cover_image": null
+  },
+  {
+    "title": "A studio publishes its design archive one page at a time",
+    "description": "The team built a searchable home for old exhibition posters, with notes from the artists who made them.",
+    "url": "/demo/design-archive",
+    "published_at": "2026-11-12T08:00:00Z",
+    "tag_list": ["culture", "design", "archives"],
+    "cover_image": null
+  }
+]

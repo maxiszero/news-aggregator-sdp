@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f6f0">
+    <meta name="description" content="The Signal combines RSS and JSON news sources in one searchable feed.">
+    <title>The Signal | News Aggregator</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+    <script defer src="/app.js"></script>
+</head>
+<body>
+    <a class="skip-link" href="#feed">Skip to stories</a>
+    <div class="page-shell">
+        <header class="masthead">
+            <div>
+                <p class="brand-label"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span> News Aggregator</p>
+                <h1>The Signal<span aria-hidden="true">.</span></h1>
+            </div>
+            <div class="edition-controls">
+                <div class="mode-control">
+                    <span class="control-label" id="mode-label">Feed mode</span>
+                    <div class="mode-switch" role="group" aria-labelledby="mode-label">
+                        <button type="button" data-mode="demo" aria-pressed="false">Demo</button>
+                        <button type="button" data-mode="live" aria-pressed="false">Live</button>
+                    </div>
+                </div>
+                <button class="refresh-button" id="refresh-feed" type="button">
+                    <span class="refresh-icon" aria-hidden="true">↻</span><span id="refresh-label">Refresh feed</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="navigation-row">
+            <nav class="topics" aria-label="Categories">
+                <button type="button" data-category="all" aria-pressed="true">All news</button>
+                <button type="button" data-category="world" aria-pressed="false">World</button>
+                <button type="button" data-category="technology" aria-pressed="false">Technology</button>
+                <button type="button" data-category="science" aria-pressed="false">Science</button>
+                <button type="button" data-category="business" aria-pressed="false">Business</button>
+                <button type="button" data-category="culture" aria-pressed="false">Culture</button>
+                <button type="button" data-category="other" aria-pressed="false">Other</button>
+            </nav>
+            <form class="search" id="search-form" role="search">
+                <span class="search-icon" aria-hidden="true"></span>
+                <label class="sr-only" for="search-input">Search stories</label>
+                <input id="search-input" type="search" placeholder="Search stories…" maxlength="180" autocomplete="off">
+            </form>
+        </div>
+
+        <main id="feed" tabindex="-1">
+            <div class="feed-heading">
+                <div>
+                    <h2 id="stories-title">Top stories</h2>
+                    <div class="feed-summary">
+                        <p class="story-count" id="story-count" aria-live="polite"></p>
+                        <span class="edition-note" id="edition-note" hidden>Fictional demo stories</span>
+                    </div>
+                </div>
+                <div class="feed-tools">
+                    <label class="select-control" for="source-filter">
+                        <span class="control-label">Source</span>
+                        <span class="select-wrap"><select id="source-filter"><option value="all">All sources</option></select></span>
+                    </label>
+                    <label class="select-control" for="sort-order">
+                        <span class="control-label">Sort by</span>
+                        <span class="select-wrap">
+                            <select id="sort-order">
+                                <option value="latest">Latest first</option>
+                                <option value="oldest">Oldest first</option>
+                                <option value="title">Title A–Z</option>
+                            </select>
+                        </span>
+                    </label>
+                    <button class="text-button reset-button" id="reset-filters" type="button" hidden>Reset filters</button>
+                </div>
+            </div>
+
+            <p class="notice" id="notice" role="status" hidden></p>
+            <div class="main-grid">
+                <section class="feed-content" aria-labelledby="stories-title" id="story-region" aria-busy="true">
+                    <div class="skeleton" aria-hidden="true"><div></div><div></div><div></div></div>
+                    <noscript><p>The Signal needs JavaScript to load your news feed.</p></noscript>
+                </section>
+
+                <aside class="sidebar" aria-labelledby="sources-title">
+                    <div class="sidebar-heading">
+                        <h2 id="sources-title">Sources</h2>
+                    </div>
+                    <div id="source-list" class="source-list"></div>
+                    <p class="source-note" id="source-note" hidden>Counts are measured before filtering.</p>
+
+                    <section class="update-panel" aria-labelledby="updates-title">
+                        <div class="update-heading">
+                            <h3 id="updates-title">Feed updates</h3>
+                            <span id="connection-dot" class="connection-dot" data-state="connecting" aria-hidden="true"></span>
+                        </div>
+                        <p id="connection-label" class="connection-label">Connecting…</p>
+                        <dl class="update-details">
+                            <div><dt>Last refresh</dt><dd id="last-refresh">—</dd></div>
+                            <div><dt>Revision</dt><dd id="revision">—</dd></div>
+                        </dl>
+                    </section>
+                </aside>
+            </div>
+        </main>
+        <footer class="site-footer"><b>The Signal<span>.</span></b><a href="#">Back to top ↑</a></footer>
+    </div>
+
+    <dialog class="story-dialog" id="story-dialog" aria-labelledby="dialog-title">
+        <div class="dialog-top">
+            <span>Fictional demo story</span>
+            <form method="dialog"><button class="dialog-close" type="submit" autofocus>Close</button></form>
+        </div>
+        <h2 id="dialog-title"></h2>
+        <div id="dialog-story"></div>
+        <p class="dialog-status" id="dialog-status" role="status"></p>
+    </dialog>
+</body>
+</html>
