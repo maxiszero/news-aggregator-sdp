@@ -6,6 +6,7 @@ The report uses the terminal screenshots in docs/screenshots/.
 
 import argparse
 import os
+import re
 import tempfile
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -24,6 +25,7 @@ from reportlab.platypus import Paragraph
 DOCS = Path(__file__).resolve().parent
 ROOT = DOCS.parent
 JAVA = ROOT / 'src' / 'main' / 'java'
+REPOSITORY_URL = 'https://github.com/maxiszero/news-aggregator-sdp'
 WIDTH, HEIGHT = A4
 LEFT, RIGHT = 50, WIDTH - 50
 PRINT_WIDTH = RIGHT - LEFT
@@ -60,13 +62,14 @@ def c(hex_value):
 
 
 class Report:
-    def __init__(self, target, members, group):
+    def __init__(self, target, members, group, repository_url):
         self.canvas = Canvas(str(target), pagesize=A4, pageCompression=1)
         self.canvas.setTitle('The Signal | News Aggregator')
         self.canvas.setSubject('Software Design Patterns final project report')
         self.figure_regions = []
         self.members = members
         self.group = group
+        self.repository_url = repository_url
 
     def text(self, value, x, y, size=10, font='Sans', color=INK, align='left'):
         self.canvas.setFillColor(c(color))
@@ -185,6 +188,19 @@ class Report:
         self.text('PROJECT TEAM', LEFT, 664, 9, 'SansBold', RED)
         if self.group:
             self.text(f'Group {self.group}', LEFT, 683, 10, 'Sans', MUTED)
+
+        repository_x = LEFT + 254
+        repository_size = 9.5
+        repository_width = pdfmetrics.stringWidth(self.repository_url, FONTS['Sans'], repository_size)
+        if repository_x + repository_width > RIGHT:
+            raise ValueError('Repository URL does not fit on the cover')
+        self.text('PROJECT REPOSITORY', repository_x, 664, 9, 'SansBold', RED)
+        self.text(self.repository_url, repository_x, 683, repository_size, 'Sans', RED)
+        self.line((repository_x, 693), (repository_x + repository_width, 693), color=RED, width=0.5)
+        self.canvas.linkURL(self.repository_url,
+                            (repository_x, HEIGHT - 695, repository_x + repository_width, HEIGHT - 681),
+                            relative=0)
+
         for index, member in enumerate(self.members or [None] * 2):
             x = LEFT + index * 254
             self.text(f'Member {index + 1}', x, 715, 10, 'SansBold')
@@ -546,12 +562,16 @@ def main():
     parser.add_argument('--members', nargs=2, metavar='NAME', default=[],
                         help='Two quoted full names in presentation order.')
     parser.add_argument('--group', default='', help='Course group identifier.')
+    parser.add_argument('--repository-url', default=REPOSITORY_URL, help='HTTPS GitHub repository URL.')
     args = parser.parse_args()
     if any(not name.strip() for name in args.members):
         parser.error('--members expects two nonempty names')
+    repository_url = args.repository_url.rstrip('/')
+    if not re.fullmatch(r'https://github\.com/[A-Za-z0-9-]+/[A-Za-z0-9_.-]+', repository_url):
+        parser.error('--repository-url expects https://github.com/OWNER/REPOSITORY')
     filename = 'News Aggregator - Project Report.pdf'
     target = (Path(tempfile.gettempdir()) if args.draft else ROOT) / filename
-    report = Report(target, args.members, args.group)
+    report = Report(target, args.members, args.group, repository_url)
     report.opening()
     report.patterns()
     report.project_diagram()
