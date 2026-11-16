@@ -2,6 +2,8 @@
 
 Проект по Software Design Patterns на Java с необязательным веб-интерфейсом. The Signal объединяет RSS и JSON в одну новостную ленту. HTTP API отдаёт статьи, поддерживает поиск, фильтры и сортировку и уведомляет подписчиков об обновлении ленты. Можно запустить только бэкенд или бэкенд вместе с интерфейсом.
 
+**GitHub:** [maxiszero/news-aggregator-sdp](https://github.com/maxiszero/news-aggregator-sdp). [PDF-отчёт](News%20Aggregator%20-%20Project%20Report.pdf) находится в корне репозитория.
+
 Команда: **Olzhabekov Ali** и **Arlan Zeinelkumar**, группа **SE-2515**. План доклада: Ali — участник 1, Arlan — участник 2.
 
 ## Запуск
@@ -153,5 +155,5 @@ HTTP-проверки запускают сервер в обоих режима
 
 ```powershell
 python -m pip install reportlab pymupdf
-python docs/build_report.py --group SE-2515 --members "Olzhabekov Ali" "Arlan Zeinelkumar"
+python docs/build_report.py --group SE-2515 --members "Olzhabekov Ali" "Arlan Zeinelkumar" --repository-url "https://github.com/maxiszero/news-aggregator-sdp"
 ```
